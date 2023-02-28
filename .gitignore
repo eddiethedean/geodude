@@ -1,7 +1,7 @@
 creds.py
 notebooks/
-src/roil.egg-info/
-src/roil/__pycache__/
+src/geodude.egg-info/
+src/geodude/__pycache__/
 dist/
 build/
 .vscode/
