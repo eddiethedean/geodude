@@ -1,0 +1,102 @@
+{
+  "san_francisco": {
+    "coordinates": {
+      "lat": 37.7749,
+      "lon": -122.4194
+    },
+    "geohashes": {
+      "1": "9",
+      "2": "9q",
+      "3": "9q8",
+      "4": "9q8y",
+      "5": "9q8yy",
+      "6": "9q8yyk",
+      "7": "9q8yyk7",
+      "8": "9q8yyk7m",
+      "9": "9q8yyk7mg",
+      "10": "9q8yyk7mgp",
+      "11": "9q8yyk7mgpu",
+      "12": "9q8yyk7mgpu0"
+    }
+  },
+  "new_york": {
+    "coordinates": {
+      "lat": 40.7128,
+      "lon": -74.0060
+    },
+    "geohashes": {
+      "1": "d",
+      "2": "dr",
+      "3": "dr5",
+      "4": "dr5r",
+      "5": "dr5rs",
+      "6": "dr5rsj",
+      "7": "dr5rsjz",
+      "8": "dr5rsjzq",
+      "9": "dr5rsjzqe",
+      "10": "dr5rsjzqer",
+      "11": "dr5rsjzqerj",
+      "12": "dr5rsjzqerj0"
+    }
+  },
+  "london": {
+    "coordinates": {
+      "lat": 51.5074,
+      "lon": -0.1278
+    },
+    "geohashes": {
+      "1": "g",
+      "2": "gc",
+      "3": "gcp",
+      "4": "gcpv",
+      "5": "gcpvj",
+      "6": "gcpvj1",
+      "7": "gcpvj1h",
+      "8": "gcpvj1h8",
+      "9": "gcpvj1h8e",
+      "10": "gcpvj1h8e0",
+      "11": "gcpvj1h8e0k",
+      "12": "gcpvj1h8e0k0"
+    }
+  },
+  "tokyo": {
+    "coordinates": {
+      "lat": 35.6762,
+      "lon": 139.6503
+    },
+    "geohashes": {
+      "1": "x",
+      "2": "xn",
+      "3": "xn7",
+      "4": "xn77",
+      "5": "xn77h",
+      "6": "xn77hb",
+      "7": "xn77hb0",
+      "8": "xn77hb0d",
+      "9": "xn77hb0d0",
+      "10": "xn77hb0d0k",
+      "11": "xn77hb0d0k0",
+      "12": "xn77hb0d0k00"
+    }
+  },
+  "sydney": {
+    "coordinates": {
+      "lat": -33.8688,
+      "lon": 151.2093
+    },
+    "geohashes": {
+      "1": "r",
+      "2": "r3",
+      "3": "r3g",
+      "4": "r3gx",
+      "5": "r3gx2",
+      "6": "r3gx2j",
+      "7": "r3gx2j8",
+      "8": "r3gx2j8e",
+      "9": "r3gx2j8e0",
+      "10": "r3gx2j8e0k",
+      "11": "r3gx2j8e0k0",
+      "12": "r3gx2j8e0k00"
+    }
+  }
+}

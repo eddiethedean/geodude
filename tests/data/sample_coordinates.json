@@ -1,0 +1,117 @@
+{
+  "sample_coordinates": [
+    {
+      "name": "San Francisco",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "country": "USA"
+    },
+    {
+      "name": "New York",
+      "lat": 40.7128,
+      "lon": -74.0060,
+      "country": "USA"
+    },
+    {
+      "name": "London",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "UK"
+    },
+    {
+      "name": "Tokyo",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "Japan"
+    },
+    {
+      "name": "Sydney",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "country": "Australia"
+    },
+    {
+      "name": "Paris",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "country": "France"
+    },
+    {
+      "name": "Berlin",
+      "lat": 52.5200,
+      "lon": 13.4050,
+      "country": "Germany"
+    },
+    {
+      "name": "Moscow",
+      "lat": 55.7558,
+      "lon": 37.6176,
+      "country": "Russia"
+    },
+    {
+      "name": "Beijing",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "country": "China"
+    },
+    {
+      "name": "Mumbai",
+      "lat": 19.0760,
+      "lon": 72.8777,
+      "country": "India"
+    }
+  ],
+  "boundary_coordinates": [
+    {
+      "name": "North Pole",
+      "lat": 90.0,
+      "lon": 0.0
+    },
+    {
+      "name": "South Pole", 
+      "lat": -90.0,
+      "lon": 0.0
+    },
+    {
+      "name": "Prime Meridian",
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    {
+      "name": "International Date Line",
+      "lat": 0.0,
+      "lon": 180.0
+    },
+    {
+      "name": "Antimeridian",
+      "lat": 0.0,
+      "lon": -180.0
+    }
+  ],
+  "invalid_coordinates": [
+    {
+      "name": "Invalid Latitude High",
+      "lat": 91.0,
+      "lon": 0.0,
+      "error": "Latitude must be between -90 and 90"
+    },
+    {
+      "name": "Invalid Latitude Low",
+      "lat": -91.0,
+      "lon": 0.0,
+      "error": "Latitude must be between -90 and 90"
+    },
+    {
+      "name": "Invalid Longitude High",
+      "lat": 0.0,
+      "lon": 181.0,
+      "error": "Longitude must be between -180 and 180"
+    },
+    {
+      "name": "Invalid Longitude Low",
+      "lat": 0.0,
+      "lon": -181.0,
+      "error": "Longitude must be between -180 and 180"
+    }
+  ]
+}
