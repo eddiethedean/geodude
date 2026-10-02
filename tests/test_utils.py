@@ -54,9 +54,9 @@ def benchmark_geohash_calculation(
 
     total_time: float = 0
     for _ in range(iterations):
-        start_time = time.time()
+        start_time = time.perf_counter()
         calculate_geohashes(lats, lons, precision)
-        total_time += time.time() - start_time
+        total_time += time.perf_counter() - start_time
 
     return total_time / iterations
 

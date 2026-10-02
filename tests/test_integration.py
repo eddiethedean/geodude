@@ -167,9 +167,9 @@ class TestPerformanceIntegration:
             lats = [37.7749 + i * 0.001 for i in range(size)]
             lons = [-122.4194 + i * 0.001 for i in range(size)]
 
-            start_time = time.time()
+            start_time = time.perf_counter()
             hashes = calculate_geohashes(lats, lons, 5)
-            end_time = time.time()
+            end_time = time.perf_counter()
 
             times.append(end_time - start_time)
             assert len(hashes) == size

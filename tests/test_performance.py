@@ -18,9 +18,9 @@ class TestPerformance:
         lats = [37.7749, 40.7128, 51.5074]
         lons = [-122.4194, -74.0060, -0.1278]
 
-        start_time = time.time()
+        start_time = time.perf_counter()
         hashes = calculate_geohashes(lats, lons, 5)
-        end_time = time.time()
+        end_time = time.perf_counter()
 
         # Should be very fast for small dataset
         assert end_time - start_time < 0.1
@@ -33,9 +33,9 @@ class TestPerformance:
         lats = [random.uniform(-90, 90) for _ in range(1000)]
         lons = [random.uniform(-180, 180) for _ in range(1000)]
 
-        start_time = time.time()
+        start_time = time.perf_counter()
         hashes = calculate_geohashes(lats, lons, 5)
-        end_time = time.time()
+        end_time = time.perf_counter()
 
         # Should complete in reasonable time
         assert end_time - start_time < 0.5
@@ -49,9 +49,9 @@ class TestPerformance:
         lats = [random.uniform(-90, 90) for _ in range(10000)]
         lons = [random.uniform(-180, 180) for _ in range(10000)]
 
-        start_time = time.time()
+        start_time = time.perf_counter()
         hashes = calculate_geohashes(lats, lons, 5)
-        end_time = time.time()
+        end_time = time.perf_counter()
 
         # Should complete in reasonable time
         assert end_time - start_time < 2.0
@@ -82,9 +82,9 @@ class TestPerformance:
         precision_times = {}
 
         for precision in [1, 5, 8, 12]:
-            start_time = time.time()
+            start_time = time.perf_counter()
             hashes = calculate_geohashes(lats, lons, precision)
-            end_time = time.time()
+            end_time = time.perf_counter()
 
             precision_times[precision] = end_time - start_time
             assert len(hashes) == 100
