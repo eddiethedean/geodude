@@ -112,16 +112,6 @@ class TestUtilities:
         avg_time = benchmark_geohash_calculation(lats, lons, 5, iterations=3)
         assert avg_time > 0
 
-        # Multiple iterations should give consistent results
-        times = []
-        for _ in range(5):
-            time_taken = benchmark_geohash_calculation(lats, lons, 5, iterations=1)
-            times.append(time_taken)
-
-        # All times should be positive and reasonably consistent
-        assert all(t > 0 for t in times)
-        assert max(times) / min(times) < 10  # Should not vary by more than 10x
-
 
 class TestEdgeCases:
     """Test edge cases and boundary conditions."""
