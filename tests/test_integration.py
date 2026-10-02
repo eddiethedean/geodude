@@ -11,6 +11,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from geodude import __author__, __version__, calculate_geohashes
 
+pytestmark = pytest.mark.integration
+
 
 class TestPackageIntegration:
     """Integration tests for the complete package."""
@@ -33,7 +35,7 @@ class TestPackageIntegration:
 
     def test_package_metadata(self) -> None:
         """Test package metadata is accessible."""
-        assert __version__ == "0.1.0"
+        assert __version__ == "0.1.1"
         assert __author__ == "Odos Matthews"
 
         # Test that metadata is accessible through package
@@ -152,6 +154,8 @@ class TestErrorHandlingIntegration:
 class TestPerformanceIntegration:
     """Integration tests for performance characteristics."""
 
+    pytestmark = pytest.mark.performance
+
     def test_scalability(self) -> None:
         """Test performance scalability with dataset size."""
         import time
@@ -174,6 +178,7 @@ class TestPerformanceIntegration:
         # (not necessarily linear, but shouldn't be exponential)
         assert times[2] < times[1] * 20  # 1000 items shouldn't take 20x longer than 100
 
+    @pytest.mark.slow
     def test_memory_efficiency(self) -> None:
         """Test memory efficiency with large datasets."""
         import sys

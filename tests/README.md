@@ -23,7 +23,7 @@ pytest
 ### Run specific test categories
 ```bash
 # Run only unit tests
-pytest -m "not slow and not integration"
+pytest -m "not slow and not integration and not performance"
 
 # Run only integration tests
 pytest -m integration
@@ -87,6 +87,11 @@ Common fixtures available in `conftest.py`:
 - `empty_coordinates` - Empty coordinate lists
 - `precision_levels` - Valid precision levels
 - `invalid_precision_levels` - Invalid precision levels
+
+The `integration`, `performance`, and `slow` markers are registered in
+`pyproject.toml`. Integration tests are marked by module; performance tests
+include `tests/test_performance.py` and the explicitly marked performance
+cases in other modules. Slow marks identify the large dataset and memory tests.
 
 ## Coverage
 

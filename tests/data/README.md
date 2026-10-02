@@ -16,6 +16,7 @@ Test data files can be loaded in tests using:
 import json
 from pathlib import Path
 
+
 def load_test_data(filename):
     data_dir = Path(__file__).parent / "data"
     with open(data_dir / filename) as f:

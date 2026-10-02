@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "geodude"
-version = "0.1.0"
+version = "0.1.1"
 description = "Calculate GeoHash functions using PyGeodesy"
 readme = "README.md"
 license = {text = "MIT"}
@@ -32,9 +32,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "mypy>=1.0",
+    "mypy>=1.0,<1.17",
     "ruff>=0.1",
-    "pytest>=8.0",
+    "pytest>=8.0,<9.0",
     "pytest-cov>=4.0",
 ]
 
@@ -55,6 +55,11 @@ testpaths = ["tests"]
 python_files = ["test_*.py", "*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+markers = [
+    "integration: end-to-end package tests",
+    "performance: performance and scalability tests",
+    "slow: tests that take longer than the normal unit suite",
+]
 
 [tool.mypy]
 python_version = "3.8"
@@ -75,6 +80,8 @@ strict = true
 [tool.ruff]
 target-version = "py38"
 line-length = 88
+
+[tool.ruff.lint]
 select = [
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings
@@ -90,5 +97,5 @@ ignore = [
     "C901",  # too complex
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]

@@ -1,6 +1,6 @@
 """Geodude: Calculate GeoHash functions using PyGeodesy."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Odos Matthews"
 
 from geodude.cluster_functions import calculate_geohashes

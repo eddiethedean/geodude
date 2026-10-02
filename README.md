@@ -43,7 +43,7 @@ lons = [-122.4194, -74.0060, -0.1278]
 # Calculate with 5-character precision
 hashes = calculate_geohashes(lats, lons, precision=5)
 print(hashes)
-# Output: ['9q8yy', 'dr5rs', 'gcpvj']
+# Output: ['9q8yy', 'dr5re', 'gcpvj']
 ```
 
 ### Single Coordinate
@@ -69,7 +69,7 @@ print(f"3-char: {hash_3[0]}")  # Output: 3-char: 9q8
 
 # 7-character precision (~153m accuracy)  
 hash_7 = calculate_geohashes(lats, lons, 7)
-print(f"7-char: {hash_7[0]}")  # Output: 7-char: 9q8yyk7
+print(f"7-char: {hash_7[0]}")  # Output: 7-char: 9q8yyk8
 ```
 
 ## API Reference
@@ -94,7 +94,7 @@ Calculate geohashes for a list of coordinates.
 lats = [37.7749, 40.7128]
 lons = [-122.4194, -74.0060]
 hashes = calculate_geohashes(lats, lons, 5)
-# Returns: ['9q8yy', 'dr5rs']
+# Returns: ['9q8yy', 'dr5re']
 ```
 
 ## Precision Levels
@@ -107,12 +107,12 @@ hashes = calculate_geohashes(lats, lons, 5)
 | 4 | ~39km × 19.5km | `9q8y` |
 | 5 | ~4.9km × 4.9km | `9q8yy` |
 | 6 | ~1.2km × 0.6km | `9q8yyk` |
-| 7 | ~153m × 153m | `9q8yyk7` |
-| 8 | ~38m × 19m | `9q8yyk7m` |
-| 9 | ~4.8m × 4.8m | `9q8yyk7mg` |
-| 10 | ~1.2m × 0.6m | `9q8yyk7mgp` |
-| 11 | ~149mm × 149mm | `9q8yyk7mgpu` |
-| 12 | ~37mm × 19mm | `9q8yyk7mgpu0` |
+| 7 | ~153m × 153m | `9q8yyk8` |
+| 8 | ~38m × 19m | `9q8yyk8y` |
+| 9 | ~4.8m × 4.8m | `9q8yyk8yt` |
+| 10 | ~1.2m × 0.6m | `9q8yyk8ytp` |
+| 11 | ~149mm × 149mm | `9q8yyk8ytpx` |
+| 12 | ~37mm × 19mm | `9q8yyk8ytpxr` |
 
 ## Development
 
@@ -156,7 +156,7 @@ ruff check src tests --fix
 
 ### Test Suite
 
-The package includes a comprehensive test suite with:
+The package includes a test suite with:
 
 - **60+ tests** covering all functionality
 - **100% code coverage** across source files
@@ -175,6 +175,14 @@ MIT License - see [LICENSE](https://github.com/eddiethedean/geodude/blob/main/LI
 Odos Matthews
 
 ## Changelog
+
+### Version 0.1.1
+
+- Corrected expected GeoHashes and usage examples for known coordinates
+- Validated precision type and range for empty and non-empty batches
+- Fixed CI to run the suite directly and added test category markers
+- Replaced timing-sensitive cache assertions with deterministic cache checks
+- Included test code and fixtures in source distributions
 
 ### Version 0.1.0
 

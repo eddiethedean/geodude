@@ -19,8 +19,8 @@ EXPECTED_GEOHASHES_SF = {
     4: "9q8y",
     5: "9q8yy",
     6: "9q8yyk",
-    7: "9q8yyk7",
-    8: "9q8yyk7m",
+    7: "9q8yyk8",
+    8: "9q8yyk8y",
 }
 
 EXPECTED_GEOHASHES_NY = {
@@ -28,8 +28,29 @@ EXPECTED_GEOHASHES_NY = {
     2: "dr",
     3: "dr5",
     4: "dr5r",
-    5: "dr5rs",
-    6: "dr5rsj",
-    7: "dr5rsjz",
-    8: "dr5rsjzq",
+    5: "dr5re",
+    6: "dr5reg",
+    7: "dr5regw",
+    8: "dr5regw3",
 }
+
+
+def test_reference_geohashes_match_expected_data() -> None:
+    """Check the published reference hashes against the batch API."""
+    import json
+    from pathlib import Path
+
+    from geodude import calculate_geohashes
+
+    path = Path(__file__).parent / "data" / "expected_geohashes.json"
+    expected_data = json.loads(path.read_text())
+
+    for data in expected_data.values():
+        coordinates = data["coordinates"]
+        for precision, expected_hash in data["geohashes"].items():
+            actual_hash = calculate_geohashes(
+                [coordinates["lat"]],
+                [coordinates["lon"]],
+                int(precision),
+            )[0]
+            assert actual_hash == expected_hash

@@ -71,6 +71,16 @@ class TestCalculateSingleGeohash:
         with pytest.raises(ValueError, match="Precision must be between 1 and 12"):
             _calculate_single_geohash(lat, lon, 13)
 
+        # A cached integer result must not make bool or float precision valid.
+        _calculate_single_geohash(lat, lon, 1)
+        for precision in (True, 1.0, 1.5):
+            with pytest.raises(ValueError, match="Precision must be an integer"):
+                _calculate_single_geohash(
+                    lat,
+                    lon,
+                    precision,
+                )
+
     def test_boundary_values(self) -> None:
         """Test single geohash with boundary coordinate values."""
         boundary_cases = [
@@ -140,6 +150,7 @@ class TestCalculateGeohashesIntegration:
 
         assert batch_hashes[0] == single_hash
 
+    @pytest.mark.performance
     def test_performance_with_large_dataset(self) -> None:
         """Test performance with large dataset."""
         import time
@@ -156,6 +167,8 @@ class TestCalculateGeohashesIntegration:
         assert end_time - start_time < 1.0
         assert len(hashes) == 1000
 
+    @pytest.mark.performance
+    @pytest.mark.slow
     def test_memory_usage(self) -> None:
         """Test that memory usage is reasonable."""
         import sys

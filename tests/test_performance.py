@@ -3,7 +3,11 @@
 import random
 import time
 
+import pytest
+
 from geodude import calculate_geohashes
+
+pytestmark = pytest.mark.performance
 
 
 class TestPerformance:
@@ -37,6 +41,7 @@ class TestPerformance:
         assert end_time - start_time < 0.5
         assert len(hashes) == 1000
 
+    @pytest.mark.slow
     def test_large_dataset_performance(self) -> None:
         """Test performance with large dataset."""
         # Generate 10000 coordinates
@@ -52,27 +57,22 @@ class TestPerformance:
         assert end_time - start_time < 2.0
         assert len(hashes) == 10000
 
-    def test_caching_performance_benefit(self) -> None:
-        """Test that caching provides performance benefits."""
+    def test_cache_hit_is_reused(self) -> None:
+        """Test that repeated coordinates reuse cached results."""
+        from geodude.cluster_functions import _calculate_single_geohash
+
         # Use same coordinates multiple times
         lats = [37.7749, 40.7128, 51.5074]
         lons = [-122.4194, -74.0060, -0.1278]
 
-        # First call (no cache)
-        start_time = time.time()
+        _calculate_single_geohash.cache_clear()
         hashes1 = calculate_geohashes(lats, lons, 5)
-        first_call_time = time.time() - start_time
-
-        # Second call (with cache)
-        start_time = time.time()
         hashes2 = calculate_geohashes(lats, lons, 5)
-        second_call_time = time.time() - start_time
 
-        # Results should be identical
         assert hashes1 == hashes2
-
-        # Second call should be faster (cached)
-        assert second_call_time < first_call_time
+        cache_info = _calculate_single_geohash.cache_info()
+        assert cache_info.misses == len(lats)
+        assert cache_info.hits == len(lats)
 
     def test_different_precision_performance(self) -> None:
         """Test performance with different precision levels."""
@@ -178,6 +178,7 @@ class TestStressTests:
         for result in all_results[1:]:
             assert result == first_result
 
+    @pytest.mark.slow
     def test_memory_efficiency(self) -> None:
         """Test memory efficiency with large datasets."""
         import sys

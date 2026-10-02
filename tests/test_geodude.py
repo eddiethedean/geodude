@@ -12,7 +12,7 @@ class TestPackageMetadata:
 
     def test_version(self) -> None:
         """Test that version is defined."""
-        assert __version__ == "0.1.0"
+        assert __version__ == "0.1.1"
 
     def test_author(self) -> None:
         """Test that author is defined."""
@@ -136,6 +136,14 @@ class TestCalculateGeohashes:
         # Test precision too high
         with pytest.raises(ValueError, match="Precision must be between 1 and 12"):
             calculate_geohashes([lat], [lon], 13)
+
+        for precision in (1.5, 5.0, True):
+            with pytest.raises(ValueError, match="Precision must be an integer"):
+                calculate_geohashes([lat], [lon], precision)  # type: ignore[arg-type]
+
+        for precision in (0, 13, 1.5, 5.0, True):
+            with pytest.raises(ValueError, match="Precision"):
+                calculate_geohashes([], [], precision)  # type: ignore[arg-type]
 
     def test_boundary_values(self) -> None:
         """Test geohash calculation with boundary coordinate values."""

@@ -68,18 +68,18 @@ class TestUtilities:
         """Test the geohash validation utility."""
         # Valid geohashes
         assert_valid_geohash("9q8yy", 5)
-        assert_valid_geohash("dr5rs", 5)
+        assert_valid_geohash("dr5re", 5)
         assert_valid_geohash("gcpvj", 5)
 
         # Test with different precisions
         assert_valid_geohash("9", 1)
-        assert_valid_geohash("9q8yyk7mgpu0", 12)
+        assert_valid_geohash("9q8yyk8ytpxr", 12)
 
     def test_assert_coordinate_lists_match(self) -> None:
         """Test the coordinate list matching utility."""
         lats = [37.7749, 40.7128]
         lons = [-122.4194, -74.0060]
-        hashes = ["9q8yy", "dr5rs"]
+        hashes = ["9q8yy", "dr5re"]
 
         # Should not raise
         assert_coordinate_lists_match(lats, lons, hashes)
